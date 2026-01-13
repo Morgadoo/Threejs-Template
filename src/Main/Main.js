@@ -53,11 +53,11 @@ export default class Main{
     // Controls
     const controlsInstance = new Controls(cameraInstance.camera, canvas , renderer.labelRenderer)
 
-    //Animate
-    const animate = new Animate(scene, cameraInstance.camera, renderer.renderer, renderer.labelRenderer, controlsInstance.controls)
-
     //Stats
     const stats = new Stats()
+
+    //Animate
+    const animate = new Animate(scene, cameraInstance.camera, renderer.renderer, renderer.labelRenderer, controlsInstance.controls, stats)
 
     }
 }
