@@ -1,5 +1,5 @@
 import * as THREE from 'three'
-import { CSS2DRenderer } from 'three/examples/jsm/renderers/CSS2DRenderer.js';
+import { CSS2DRenderer } from 'three/addons/renderers/CSS2DRenderer.js';
 
 
 export default class Renderer{
