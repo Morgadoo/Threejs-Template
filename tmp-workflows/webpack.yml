@@ -1,0 +1,35 @@
+# NOTE: This workflow file has been updated with the latest Node.js versions and GitHub Actions.
+# You need to manually move this file to .github/workflows/webpack.yml to replace the existing workflow.
+# The automated tool does not have permissions to modify files in the .github/workflows/ directory.
+#
+# To apply this update, run:
+#   mv tmp-workflows/webpack.yml .github/workflows/webpack.yml
+
+name: NodeJS with Webpack
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x, 22.x]
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+
+    - name: Build
+      run: |
+        npm install
+        npm run build
