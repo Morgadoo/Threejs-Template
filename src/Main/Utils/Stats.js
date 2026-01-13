@@ -1,27 +1,18 @@
 import Stat from 'stats.js'
 
-
-
 export default class Stats{
 
     constructor(){
+        this.stats = new Stat()
+        this.stats.showPanel(0)
+        document.body.appendChild(this.stats.dom)
+    }
 
-        //Stats - npm install stats.js
-        var stats = new Stat();
-        stats.showPanel( 0 ); // 0: fps, 1: ms, 2: mb, 3+: custom
-        document.body.appendChild( stats.dom );
+    begin(){
+        this.stats.begin()
+    }
 
-        function animate() {
-
-            stats.begin()
-
-            // monitored code goes here
-
-            stats.end()
-
-            requestAnimationFrame( animate )
-
-        }
-        requestAnimationFrame( animate )
+    end(){
+        this.stats.end()
     }
 }
