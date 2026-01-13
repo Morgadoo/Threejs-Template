@@ -7,6 +7,5 @@ export default class Controls{
 
         this.controls = new OrbitControls(camera, labelRenderer.domElement)
         this.controls.enableDamping = true
-        return this.controls
     }
 }
