@@ -18,7 +18,5 @@ export default class Sizes{
             renderer.setPixelRatio(this.pixelRatio)
 
             labelRenderer.setSize( this.width, this.height );
-
-            console.log("Update resize")
     }
 }

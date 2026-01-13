@@ -1,5 +1,4 @@
 import * as THREE from 'three'
-import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
 import Animate from './Animate'
 import Camera from './Camera'
 import Controls from './Controls'
@@ -14,7 +13,6 @@ import Stats from './Utils/Stats'
 
 export default class Main{
     constructor(){
-        console.log("Start Main")
 
     /**
      * Main
