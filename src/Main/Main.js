@@ -29,11 +29,11 @@ export default class Main{
     //Sizes
     const sizes = new Sizes()
     window.addEventListener('resize', () =>{
-        sizes.updateSize(camera, renderer.renderer , renderer.labelRenderer)
+        sizes.updateSize(cameraInstance.camera, renderer.renderer , renderer.labelRenderer)
     })
 
     //Camera
-    const camera = new Camera(sizes.width, sizes.height, scene)
+    const cameraInstance = new Camera(sizes.width, sizes.height, scene)
 
     //Geometry
     const geometry = new Geometry(scene)
@@ -51,10 +51,10 @@ export default class Main{
     const renderer = new Renderer(canvas, sizes.width, sizes.height)
     
     // Controls
-    const controls = new Controls(camera, canvas , renderer.labelRenderer)
+    const controlsInstance = new Controls(cameraInstance.camera, canvas , renderer.labelRenderer)
 
     //Animate
-    const animate = new Animate(scene, camera, renderer.renderer, renderer.labelRenderer, controls)
+    const animate = new Animate(scene, cameraInstance.camera, renderer.renderer, renderer.labelRenderer, controlsInstance.controls)
 
     //Stats
     const stats = new Stats()
