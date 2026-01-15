@@ -3,13 +3,16 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import Animate from './Animate'
 import Camera from './Camera'
 import Controls from './Controls'
-import Geometry from './Geometry'
 import Light from './Light'
 import Renderer from './Renderer'
 import Helpers from './Utils/Helpers'
-import Label from './Utils/Label'
 import Sizes from "./Utils/Sizes"
 import Stats from './Utils/Stats'
+import Car from './Car'
+import Environment from './Environment'
+import InputController from './InputController'
+import CameraController from './CameraController'
+import GameUI from './GameUI'
 
 
 export default class Main{
@@ -35,17 +38,26 @@ export default class Main{
     //Camera
     const camera = new Camera(sizes.width, sizes.height, scene)
 
-    //Geometry
-    const geometry = new Geometry(scene)
-    
-    //Label
-    const label = new Label(geometry.cube)
-
     //Helpers
     const helpers = new Helpers(scene)
     
     //Light
     const light = new Light(scene)
+
+    //Environment
+    const environment = new Environment(scene)
+
+    //Car
+    const car = new Car(scene)
+
+    //Input Controller
+    const inputController = new InputController()
+
+    //Camera Controller
+    const cameraController = new CameraController(camera.camera, car, controls)
+
+    //Game UI
+    const gameUI = new GameUI(car)
     
     //Renderer
     const renderer = new Renderer(canvas, sizes.width, sizes.height)
@@ -54,7 +66,7 @@ export default class Main{
     const controls = new Controls(camera, canvas , renderer.labelRenderer)
 
     //Animate
-    const animate = new Animate(scene, camera, renderer.renderer, renderer.labelRenderer, controls)
+    const animate = new Animate(scene, camera, renderer.renderer, renderer.labelRenderer, controls, car, inputController, cameraController, gameUI)
 
     //Stats
     const stats = new Stats()
