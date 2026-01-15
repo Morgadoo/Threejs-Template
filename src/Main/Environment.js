@@ -4,7 +4,6 @@ export default class Environment {
     constructor(scene) {
         this.scene = scene
         
-        // Create all environment elements
         this.createRoad()
         this.createLaneMarkings()
         this.createGround()
@@ -45,7 +44,6 @@ export default class Environment {
             emissiveIntensity: 0.2
         })
         
-        // Center lane markings
         for (let i = 0; i < numMarkings; i++) {
             const marking = new THREE.Mesh(markingGeometry, markingMaterial)
             marking.position.set(
@@ -56,7 +54,6 @@ export default class Environment {
             this.scene.add(marking)
         }
         
-        // Side lane markings (solid lines)
         const sideLaneGeometry = new THREE.BoxGeometry(markingWidth, 0.05, roadLength)
         const sideLaneMaterial = new THREE.MeshStandardMaterial({ 
             color: 0xffff00,
@@ -64,12 +61,10 @@ export default class Environment {
             emissiveIntensity: 0.1
         })
         
-        // Left side line
         const leftLine = new THREE.Mesh(sideLaneGeometry, sideLaneMaterial)
         leftLine.position.set(-5.5, 0.03, roadLength / 2 - 25)
         this.scene.add(leftLine)
         
-        // Right side line
         const rightLine = new THREE.Mesh(sideLaneGeometry, sideLaneMaterial)
         rightLine.position.set(5.5, 0.03, roadLength / 2 - 25)
         this.scene.add(rightLine)
@@ -93,7 +88,6 @@ export default class Environment {
     }
     
     createObstacles() {
-        // Create buildings/obstacles along the sides of the road
         const buildingMaterial = new THREE.MeshStandardMaterial({ 
             color: 0x8b7355,
             roughness: 0.7,
@@ -106,7 +100,6 @@ export default class Environment {
             metalness: 0.2
         })
         
-        // Create buildings at intervals along the road
         const buildingPositions = [
             { x: -15, z: 20, width: 8, height: 12, depth: 8 },
             { x: 15, z: 30, width: 6, height: 15, depth: 6 },
@@ -119,7 +112,6 @@ export default class Environment {
         ]
         
         buildingPositions.forEach(pos => {
-            // Building body
             const buildingGeometry = new THREE.BoxGeometry(pos.width, pos.height, pos.depth)
             const building = new THREE.Mesh(buildingGeometry, buildingMaterial)
             building.position.set(pos.x, pos.height / 2, pos.z)
@@ -127,7 +119,6 @@ export default class Environment {
             building.receiveShadow = true
             this.scene.add(building)
             
-            // Roof
             const roofGeometry = new THREE.BoxGeometry(pos.width + 1, 1, pos.depth + 1)
             const roof = new THREE.Mesh(roofGeometry, roofMaterial)
             roof.position.set(pos.x, pos.height + 0.5, pos.z)
@@ -135,7 +126,6 @@ export default class Environment {
             this.scene.add(roof)
         })
         
-        // Add some trees (simple cylinders with sphere tops)
         const treeTrunkMaterial = new THREE.MeshStandardMaterial({ color: 0x4a3728 })
         const treeFoliageMaterial = new THREE.MeshStandardMaterial({ color: 0x2d5016 })
         
@@ -153,14 +143,12 @@ export default class Environment {
         ]
         
         treePositions.forEach(pos => {
-            // Trunk
             const trunkGeometry = new THREE.CylinderGeometry(0.5, 0.6, 4, 8)
             const trunk = new THREE.Mesh(trunkGeometry, treeTrunkMaterial)
             trunk.position.set(pos.x, 2, pos.z)
             trunk.castShadow = true
             this.scene.add(trunk)
             
-            // Foliage
             const foliageGeometry = new THREE.SphereGeometry(2.5, 8, 8)
             const foliage = new THREE.Mesh(foliageGeometry, treeFoliageMaterial)
             foliage.position.set(pos.x, 5, pos.z)
