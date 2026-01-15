@@ -50,20 +50,20 @@ export default class Main{
     //Car
     const car = new Car(scene)
 
-    //Input Controller
-    const inputController = new InputController()
-
-    //Camera Controller
-    const cameraController = new CameraController(camera.camera, car, controls)
-
-    //Game UI
-    const gameUI = new GameUI(car)
-    
     //Renderer
     const renderer = new Renderer(canvas, sizes.width, sizes.height)
     
     // Controls
     const controls = new Controls(camera, canvas , renderer.labelRenderer)
+
+    //Input Controller
+    const inputController = new InputController()
+
+    //Camera Controller
+    const cameraController = new CameraController(camera.camera, car, controls)
+    
+    //Game UI
+    const gameUI = new GameUI(car)
 
     //Animate
     const animate = new Animate(scene, camera, renderer.renderer, renderer.labelRenderer, controls, car, inputController, cameraController, gameUI)
@@ -73,3 +73,4 @@ export default class Main{
 
     }
 }
+
