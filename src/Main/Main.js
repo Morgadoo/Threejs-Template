@@ -1,5 +1,4 @@
 import * as THREE from 'three'
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import Animate from './Animate'
 import Camera from './Camera'
 import Controls from './Controls'
@@ -7,7 +6,6 @@ import Geometry from './Geometry'
 import Light from './Light'
 import Renderer from './Renderer'
 import Helpers from './Utils/Helpers'
-import Label from './Utils/Label'
 import Sizes from "./Utils/Sizes"
 import Stats from './Utils/Stats'
 
@@ -29,7 +27,7 @@ export default class Main{
     //Sizes
     const sizes = new Sizes()
     window.addEventListener('resize', () =>{
-        sizes.updateSize(camera, renderer.renderer , renderer.labelRenderer)
+        sizes.updateSize(camera.camera, renderer.renderer , renderer.labelRenderer)
     })
 
     //Camera
@@ -37,9 +35,7 @@ export default class Main{
 
     //Geometry
     const geometry = new Geometry(scene)
-    
-    //Label
-    const label = new Label(geometry.cube)
+    const car = geometry.car
 
     //Helpers
     const helpers = new Helpers(scene)
@@ -54,7 +50,7 @@ export default class Main{
     const controls = new Controls(camera, canvas , renderer.labelRenderer)
 
     //Animate
-    const animate = new Animate(scene, camera, renderer.renderer, renderer.labelRenderer, controls)
+    const animate = new Animate(scene, camera, renderer.renderer, renderer.labelRenderer, controls, car)
 
     //Stats
     const stats = new Stats()

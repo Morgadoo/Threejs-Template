@@ -2,7 +2,7 @@ import * as THREE from 'three'
 
 export default class Animate{
     
-    constructor(scene, camera, renderer, labelRenderer, controls){
+    constructor(scene, camera, renderer, labelRenderer, controls, car){
 
         const clock = new THREE.Clock()
         let lastElapsedTime = 0
@@ -13,12 +13,15 @@ export default class Animate{
             const deltaTime = elapsedTime - lastElapsedTime
             lastElapsedTime = elapsedTime
 
-            // Update controls
-            controls.update()
+            // Update car physics
+            car.update(deltaTime, controls)
+            
+            // Update camera to follow car
+            camera.update(car.getPosition(), car.getRotation())
 
             // Render
-            renderer.render(scene, camera)
-            labelRenderer.render( scene, camera );
+            renderer.render(scene, camera.camera)
+            labelRenderer.render( scene, camera.camera );
 
             // Call tick again on the next frame
             window.requestAnimationFrame(tick)

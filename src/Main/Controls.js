@@ -1,12 +1,10 @@
-import * as THREE from 'three'
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
+import KeyboardControls from './KeyboardControls.js'
 
 export default class Controls{
     
     constructor(camera,canvas,labelRenderer){
-
-        this.controls = new OrbitControls(camera, labelRenderer.domElement)
-        this.controls.enableDamping = true
+        
+        this.controls = new KeyboardControls()
         return this.controls
     }
 }
