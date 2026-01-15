@@ -60,7 +60,7 @@ export default class Main{
     const inputController = new InputController()
 
     //Camera Controller
-    const cameraController = new CameraController(camera.camera, car, controls)
+    const cameraController = new CameraController(camera, car, controls)
     
     //Game UI
     const gameUI = new GameUI(car)
