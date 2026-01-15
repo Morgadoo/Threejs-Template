@@ -12,8 +12,11 @@ export default class InputController {
     }
 
     setupEventListeners() {
-        window.addEventListener('keydown', (event) => this.handleKeyDown(event))
-        window.addEventListener('keyup', (event) => this.handleKeyUp(event))
+        this.handleKeyDown = this.handleKeyDown.bind(this)
+        this.handleKeyUp = this.handleKeyUp.bind(this)
+        
+        window.addEventListener('keydown', this.handleKeyDown)
+        window.addEventListener('keyup', this.handleKeyUp)
     }
 
     handleKeyDown(event) {
