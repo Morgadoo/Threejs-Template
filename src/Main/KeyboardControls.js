@@ -78,9 +78,9 @@ export default class KeyboardControls {
     
     getTurnDirection() {
         if (this.keys.left && !this.keys.right) {
-            return 1
-        } else if (this.keys.right && !this.keys.left) {
             return -1
+        } else if (this.keys.right && !this.keys.left) {
+            return 1
         }
         return 0
     }

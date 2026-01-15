@@ -17,7 +17,6 @@ export default class Camera{
         this.lerpFactor = 0.1
         
         scene.add(this.camera)
-        return this.camera
     }
     
     update(carPosition, carRotation) {

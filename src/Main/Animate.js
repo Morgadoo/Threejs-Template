@@ -20,8 +20,8 @@ export default class Animate{
             camera.update(car.getPosition(), car.getRotation())
 
             // Render
-            renderer.render(scene, camera)
-            labelRenderer.render( scene, camera );
+            renderer.render(scene, camera.camera)
+            labelRenderer.render( scene, camera.camera );
 
             // Call tick again on the next frame
             window.requestAnimationFrame(tick)

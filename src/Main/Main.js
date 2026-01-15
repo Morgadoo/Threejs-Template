@@ -27,7 +27,7 @@ export default class Main{
     //Sizes
     const sizes = new Sizes()
     window.addEventListener('resize', () =>{
-        sizes.updateSize(camera, renderer.renderer , renderer.labelRenderer)
+        sizes.updateSize(camera.camera, renderer.renderer , renderer.labelRenderer)
     })
 
     //Camera
