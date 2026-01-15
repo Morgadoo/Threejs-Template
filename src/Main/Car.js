@@ -29,6 +29,7 @@ export default class Car {
         })
         this.body = new THREE.Mesh(bodyGeometry, bodyMaterial)
         this.body.position.y = 0.6
+        this.body.castShadow = true
         this.carGroup.add(this.body)
         
         // Create car roof/cabin
@@ -40,6 +41,7 @@ export default class Car {
         })
         this.roof = new THREE.Mesh(roofGeometry, roofMaterial)
         this.roof.position.set(0, 1.3, -0.3)
+        this.roof.castShadow = true
         this.carGroup.add(this.roof)
         
         // Create windows
@@ -55,11 +57,13 @@ export default class Car {
         const frontWindowGeometry = new THREE.BoxGeometry(1.5, 0.5, 0.1)
         this.frontWindow = new THREE.Mesh(frontWindowGeometry, windowMaterial)
         this.frontWindow.position.set(0, 1.3, 0.65)
+        this.frontWindow.castShadow = true
         this.carGroup.add(this.frontWindow)
         
         // Back window
         this.backWindow = new THREE.Mesh(frontWindowGeometry, windowMaterial)
         this.backWindow.position.set(0, 1.3, -1.35)
+        this.backWindow.castShadow = true
         this.carGroup.add(this.backWindow)
         
         // Create wheels
@@ -83,6 +87,7 @@ export default class Car {
             const wheel = new THREE.Mesh(wheelGeometry, wheelMaterial)
             wheel.position.set(pos[0], pos[1], pos[2])
             wheel.rotation.z = Math.PI / 2
+            wheel.castShadow = true
             this.wheels.push(wheel)
             this.carGroup.add(wheel)
         })
@@ -176,3 +181,4 @@ export default class Car {
         return this.carGroup.rotation.y
     }
 }
+
