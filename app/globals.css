@@ -1,0 +1,17 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  overflow: hidden;
+}
+
+.label {
+  color: rgb(255, 0, 0);
+  font-family: sans-serif;
+  font-size: 2em;
+  padding: 2px;
+  background: rgba(0, 0, 0, 0.6);
+}
